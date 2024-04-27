@@ -246,9 +246,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundSettings, Assembly-CSharp
-        m_MethodName: TurnBackgroundSound
+      - m_Target: {fileID: 521135568}
+        m_TargetAssemblyTypeName: AdjustVolume, Assembly-CSharp
+        m_MethodName: TornAllSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -511,7 +511,7 @@ AudioSource:
   m_GameObject: {fileID: 346239817}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2829896113934439389, guid: ae7841e44a807a044b5df148e1c9695d, type: 2}
   m_audioClip: {fileID: 8300000, guid: 229bdea656f991c4dbcfd473926838b8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.468
@@ -938,6 +938,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463061415}
   m_CullTransparentMesh: 1
+--- !u!1 &521135567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 521135569}
+  - component: {fileID: 521135568}
+  m_Layer: 0
+  m_Name: Mixer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &521135568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521135567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d05faec83007d2448b147a7220d8331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioMixerGroup: {fileID: 24300002, guid: ae7841e44a807a044b5df148e1c9695d, type: 2}
+  _totalVolume: {fileID: 1069436614}
+  _buttonVolume: {fileID: 2051247754}
+  _backgroundMusicVolume: {fileID: 631952332}
+  _buttonAllSoundValue: {fileID: 89560312}
+--- !u!4 &521135569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521135567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 383.3982, y: 199.17514, z: 42.0515}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &631952330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,17 +1072,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 1406553483}
   m_HandleRect: {fileID: 372080871}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 346239818}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_volume
-        m_Mode: 0
+      - m_Target: {fileID: 521135568}
+        m_TargetAssemblyTypeName: AdjustVolume, Assembly-CSharp
+        m_MethodName: ChangeVolumeBackgroundMusic
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1054,7 +1103,6 @@ GameObject:
   - component: {fileID: 658799851}
   - component: {fileID: 658799850}
   - component: {fileID: 658799849}
-  - component: {fileID: 658799853}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1146,22 +1194,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &658799853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658799848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c5a6c1301c1b364db458f6bd03b54af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _backgroundMusic: {fileID: 0}
-  _sound1: {fileID: 0}
-  _sound2: {fileID: 0}
-  _sound3: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,53 +1763,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 223829360}
   m_HandleRect: {fileID: 2130741868}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 346239818}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_volume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1855096365}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_volume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1221441713}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_volume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1310991132}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_volume
-        m_Mode: 0
+      - m_Target: {fileID: 521135568}
+        m_TargetAssemblyTypeName: AdjustVolume, Assembly-CSharp
+        m_MethodName: ChangeVolumeAllSound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1948,7 +1944,7 @@ AudioSource:
   m_GameObject: {fileID: 1221441712}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7057924024430377668, guid: ae7841e44a807a044b5df148e1c9695d, type: 2}
   m_audioClip: {fileID: 8300000, guid: 70d4711ceea831a4a94ce659624795d2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -2152,7 +2148,7 @@ AudioSource:
   m_GameObject: {fileID: 1310991131}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7057924024430377668, guid: ae7841e44a807a044b5df148e1c9695d, type: 2}
   m_audioClip: {fileID: 8300000, guid: f85e13fa5e648d142a8212224781c105, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3045,7 +3041,7 @@ AudioSource:
   m_GameObject: {fileID: 1855096364}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7057924024430377668, guid: ae7841e44a807a044b5df148e1c9695d, type: 2}
   m_audioClip: {fileID: 8300000, guid: 4b8d2b1d22d3b8b4691289289fba4127, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3367,41 +3363,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 1229781298}
   m_HandleRect: {fileID: 2064445571}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1855096365}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_volume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1221441713}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_volume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1310991132}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_volume
-        m_Mode: 0
+      - m_Target: {fileID: 521135568}
+        m_TargetAssemblyTypeName: AdjustVolume, Assembly-CSharp
+        m_MethodName: ChangeVolumeSoundBaton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
